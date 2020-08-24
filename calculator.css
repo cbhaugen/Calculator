@@ -1,0 +1,83 @@
+body {
+  font-size: 100%;
+  background-color: black;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px 10px;
+  grid-template-columns: 80px 80px 80px 80px;
+  grid-template-rows: 80px 80px 80px 80px 80px 80px 80px;
+  justify-content: center;
+  align-content: center;
+  background-color: #4E6878;
+  width: 375px;
+  height: 650px;
+  border-radius: 25px;
+  padding: 0 10px 0 10px;
+}
+
+.grid-container > div {
+  text-align: center;
+  background-color: #A09763;
+  font-size: 2.75em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+button {
+  font-family: 'Robobo', 'Arial', sans-serif;
+  font-size: 2.75em;
+  border: none;
+  background-color: #769C96;
+  border-radius: 10px;
+}
+
+button:active, #clear:active, #decimal:active, #divide:active, #multiply:active,
+#subtract:active, #addition:active, #equals:active {
+  background-color: #4E6878;
+  border: none;
+}
+
+button:focus, #clear:active, #decimal:active, #divide:active, #multiply:active,
+#subtract:active, #addition:active, #equals:active {
+  outline:none;
+}
+
+#zero {
+  grid-column: 2 / span 2;
+}
+
+#calcName {
+  grid-column: 1 / 5;
+  background-color: #4E6878;
+  color: #769C96;
+  font-size: 3.5em;
+}
+
+#display {
+  grid-column: 1 / 5;
+  background-color: #8A6A6C;
+  text-align: right;
+  justify-content: flex-end;
+  padding-right: 10px;
+  border-radius: 10px;
+}
+
+#clear {
+  grid-column: 1 / span 2;
+}
+
+#clear, #decimal {
+  background-color: #8A6A6C;
+}
+
+#equals {
+  grid-column: 3 / span 2;
+}
+
+#divide, #multiply, #subtract, #addition, #equals {
+  background-color: #584250;
+}
