@@ -53,6 +53,11 @@ function clear () {
   calc.total = '0'
 }
 
+function equals () {
+  calc.secondOperand = calc.tempNumber
+  operate(calc.operator, calc.firstOperand, calc.secondOperand)
+}
+
 const numButton = document.querySelectorAll('[data-number]')
 const operateButton = document.querySelectorAll('[data-operation]')
 
@@ -67,8 +72,7 @@ numButton.forEach(button => {
 })
 // equals
 document.getElementById('equals').addEventListener('click', () => {
-  calc.secondOperand = calc.tempNumber
-  operate(calc.operator, calc.firstOperand, calc.secondOperand)
+  equals()
   updateDisplay(calc.total)
 })
 // clear
@@ -79,11 +83,23 @@ document.getElementById('clear').addEventListener('click', () => {
 // operators
 operateButton.forEach(button => {
   button.addEventListener('click', () => {
-    calc.firstOperand = calc.tempNumber
-    calc.tempNumber = ''
+    if (calc.firstOperand === '') {
+      calc.firstOperand = calc.tempNumber
+      calc.tempNumber = ''
+    } else {
+      equals()
+      calc.firstOperand = calc.total
+      calc.secondOperand = ''
+      calc.tempNumber = ''
+    }
     if (button.value === '+') calc.operator = 'addition'
     else if (button.value === '-') calc.operator = 'subtract'
     else if (button.value === '×') calc.operator = 'multiply'
     else if (button.value === '÷') calc.operator = 'divide'
   })
 })
+
+// to do:
+// round long decimals to fit screen
+// make sure decimal can't be entered more than once
+// keyboard support
