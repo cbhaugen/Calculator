@@ -73,7 +73,7 @@ numButton.forEach(button => {
 // equals
 document.getElementById('equals').addEventListener('click', () => {
   equals()
-  updateDisplay(calc.total)
+  updateDisplay(+calc.total.toFixed(4))
 })
 // clear
 document.getElementById('clear').addEventListener('click', () => {
@@ -100,6 +100,5 @@ operateButton.forEach(button => {
 })
 
 // to do:
-// round long decimals to fit screen
 // make sure decimal can't be entered more than once
 // keyboard support
