@@ -8,7 +8,7 @@ const calc = {
 }
 
 function addition (a, b) {
-  calc.total = a + b
+  calc.total = parseFloat(a) + parseFloat(b)
   return calc.total
 }
 
@@ -23,8 +23,12 @@ function multiply (a, b) {
 }
 
 function divide (a, b) {
-  calc.total = a / b
-  return calc.total
+  if (b === '0') {
+    calc.total = "Can't divide by 0"
+  } else {
+    calc.total = a / b
+    return calc.total
+  }
 }
 
 // update display
@@ -38,6 +42,15 @@ function operate (operator, a, b) {
   else if (operator === 'subtract') subtract(a, b)
   else if (operator === 'multiply') multiply(a, b)
   else if (operator === 'divide') divide(a, b)
+}
+
+function clear () {
+  calc.displayValue = '0'
+  calc.tempNumber = ''
+  calc.firstOperand = ''
+  calc.secondOperand = ''
+  calc.operator = null
+  calc.total = '0'
 }
 
 const numButton = document.querySelectorAll('[data-number]')
@@ -60,12 +73,7 @@ document.getElementById('equals').addEventListener('click', () => {
 })
 // clear
 document.getElementById('clear').addEventListener('click', () => {
-  calc.displayValue = '0'
-  calc.tempNumber = ''
-  calc.firstOperand = ''
-  calc.secondOperand = ''
-  calc.operator = null
-  calc.total = '0'
+  clear()
   updateDisplay(0)
 })
 // operators
